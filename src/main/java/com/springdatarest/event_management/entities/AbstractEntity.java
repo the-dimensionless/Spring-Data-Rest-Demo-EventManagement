@@ -1,5 +1,6 @@
 package com.springdatarest.event_management.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class AbstractEntity {
     protected Long id;
 
     // Following annotation makes sure we need not get this from the Request (auto generated)
+    @JsonIgnore
     @CreationTimestamp
     @Column(updatable = false)
     protected Instant created;

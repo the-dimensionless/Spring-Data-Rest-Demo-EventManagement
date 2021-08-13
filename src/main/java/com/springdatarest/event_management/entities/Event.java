@@ -1,5 +1,6 @@
 package com.springdatarest.event_management.entities;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Set;
 
+@JsonPropertyOrder({"resourceId"})
 @Entity
 public class Event extends AbstractEntity {
     private String name;
@@ -100,6 +102,10 @@ public class Event extends AbstractEntity {
 
     public void setVenue(Venue venue) {
         this.venue = venue;
+    }
+
+    public Long getResourceId() {
+        return this.id;
     }
 
     @Override
