@@ -7,9 +7,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.time.ZoneId;
 import java.util.List;
 
 public interface EventRepositoryInterface extends PagingAndSortingRepository<Event, Long> {
 
     Page<Event> findByName(@Param("name") String eventName, Pageable pageable); // pass req param as name:value
+
+    Page<Event> findByNameAndZoneId(@Param("name") String eventName, @Param("zoneId") ZoneId zoneId, Pageable pageable);
 }
