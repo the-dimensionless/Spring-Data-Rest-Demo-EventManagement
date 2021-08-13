@@ -704,4 +704,104 @@ Todo: Checkout if already checkedIn or else throw exception
 
 Ex-> combining street addresses using spEL
 
+HTTP GET METHOD: 
+URL: http://localhost:8080/event-management/venues?projection=virtual
+Response:
+``` yaml {
+{
+    "_embedded": {
+        "venues": [
+            {
+                "completeStreetAddress": "12345 Spice Wood Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/venues/57"
+                    },
+                    "venue": {
+                        "href": "http://localhost:8080/event-management/venues/57{?projection}",
+                        "templated": true
+                    }
+                }
+            },
+            {
+                "completeStreetAddress": "12345 Spice Wood Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/venues/59"
+                    },
+                    "venue": {
+                        "href": "http://localhost:8080/event-management/venues/59{?projection}",
+                        "templated": true
+                    }
+                }
+            },
+            {
+                "completeStreetAddress": "12345 Spice Wood Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/venues/61"
+                    },
+                    "venue": {
+                        "href": "http://localhost:8080/event-management/venues/61{?projection}",
+                        "templated": true
+                    }
+                }
+            },
+            {
+                "completeStreetAddress": "12345 Spice Wood Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/venues/63"
+                    },
+                    "venue": {
+                        "href": "http://localhost:8080/event-management/venues/63{?projection}",
+                        "templated": true
+                    }
+                }
+            },
+            {
+                "completeStreetAddress": "12345 Spice Wood Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/venues/65"
+                    },
+                    "venue": {
+                        "href": "http://localhost:8080/event-management/venues/65{?projection}",
+                        "templated": true
+                    }
+                }
+            },
+            {
+                "completeStreetAddress": "12345 Spice Wood Springs",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/venues/67"
+                    },
+                    "venue": {
+                        "href": "http://localhost:8080/event-management/venues/67{?projection}",
+                        "templated": true
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/event-management/venues?projection=virtual"
+        },
+        "profile": {
+            "href": "http://localhost:8080/event-management/profile/venues"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 6,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+```
+
+
+
 

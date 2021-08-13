@@ -8,5 +8,5 @@ import org.springframework.data.rest.core.config.Projection;
 public interface StreetAddressProjection {
 
     @Value("#{target.streetAddress} #{target.streetAddress2}")
-    String getCompleteStreetAddress()
+    String getCompleteStreetAddress();
 }
