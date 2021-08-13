@@ -1,18 +1,34 @@
 package com.springdatarest.event_management.entities;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
+import javax.persistence.*;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Objects;
+import java.util.Set;
 
+@Entity
 public class Event extends AbstractEntity {
-
     private String name;
     private String description;
     private ZonedDateTime startTime;
     private ZonedDateTime endTime;
     private ZoneId zoneId;
     private boolean started;
-    //private Organizer organizer;
 
+    // Many to one relation
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private Organizer organizer;
+
+    // Orphan removal removes the child when association (not db entry of event) is removed
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Participant> participants;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @RestResource(exported = false)
+    private Venue venue;
 
     public String getName() {
         return name;
@@ -60,5 +76,39 @@ public class Event extends AbstractEntity {
 
     public void setStarted(boolean started) {
         this.started = started;
+    }
+
+    public Organizer getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
+
+    public Set<Participant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return Objects.equals(id, ((Event)o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

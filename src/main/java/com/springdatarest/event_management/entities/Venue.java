@@ -1,5 +1,9 @@
 package com.springdatarest.event_management.entities;
 
+import javax.persistence.Entity;
+import java.util.Objects;
+
+@Entity
 public class Venue extends AbstractEntity {
     private String name;
     private String streetAddress;
@@ -63,5 +67,15 @@ public class Venue extends AbstractEntity {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return Objects.equals(id, ((Venue)o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
