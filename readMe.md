@@ -802,6 +802,101 @@ Response:
 }
 ```
 
+Excerpt Projection: Make any projection default by adding
+@RepositoryRestResource(excerpt = Projection.class)
+on the Jpa Repository
+URL : http://localhost:8080/event-management/events?size=1
+```yaml {
+{
+    "_embedded": {
+        "events": [
+            {
+                "endTime": "2021-08-15T13:00:41.316+05:30",
+                "name": "Spring Boot",
+                "startTime": "2021-08-14T13:00:10.781+05:30",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/event-management/events/56"
+                    },
+                    "event": {
+                        "href": "http://localhost:8080/event-management/events/56{?projection}",
+                        "templated": true
+                    },
+                    "participants": {
+                        "href": "http://localhost:8080/event-management/events/56/participants"
+                    },
+                    "organizer": {
+                        "href": "http://localhost:8080/event-management/events/56/organizer"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "first": {
+            "href": "http://localhost:8080/event-management/events?page=0&size=1"
+        },
+        "self": {
+            "href": "http://localhost:8080/event-management/events?size=1"
+        },
+        "next": {
+            "href": "http://localhost:8080/event-management/events?page=1&size=1"
+        },
+        "last": {
+            "href": "http://localhost:8080/event-management/events?page=5&size=1"
+        },
+        "profile": {
+            "href": "http://localhost:8080/event-management/profile/events"
+        },
+        "search": {
+            "href": "http://localhost:8080/event-management/events/search"
+        }
+    },
+    "page": {
+        "size": 1,
+        "totalElements": 6,
+        "totalPages": 6,
+        "number": 0
+    }
+}
+```
+
+Excerpt is applied on Collection of resources
+
+### HAL Browser
+
+HAL Browser application when pointed to Spring Data REST API can
+generate JS based HAL Client on the fly.
+spring-data-rest-hal-browser is the dependency.
+or
+spring-data-rest-hal-explorer
+
+HAL Browser/Explorer
+
+URL: http://localhost:8080/event-management/explorer/index.html#uri=/event-management/
+
+> ![HAL 1](./images/HAL1.png)
+
+> ![HAL 2](./images/HAL 2.png)
+
+> ![HAL 3](./images/HAL 3.png)
+
+> ![HAL 4](./images/HAL 4.png)
+
+
+### Securing Spring Microservices
+1. Add Maven Dependency (spring-boot-starter-security)
+2. Create Java based Config file (Configure Security Policy) that will extend WebSecurityConfigurerAdapter class
+3. Define Users and roles
+4. authentication and authorization
+
+* Method Level Security
+1. @EnableGlobalMethodSecurity on Java Config
+2. @PreAuthorize("hasRole('ROLE_ADMIN')")
+
+Basic Auth (username & password case sensitive)
+401 Unauthorized
+403 Forbidden
 
 
 
