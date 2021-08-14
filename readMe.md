@@ -877,11 +877,11 @@ URL: http://localhost:8080/event-management/explorer/index.html#uri=/event-manag
 
 > ![HAL 1](./images/HAL1.png)
 
-> ![HAL 2](./images/HAL 2.png)
+> ![HAL 2](images/HAL2.png)
 
-> ![HAL 3](./images/HAL 3.png)
+> ![HAL 3](images/HAL3.png)
 
-> ![HAL 4](./images/HAL 4.png)
+> ![HAL 4](images/HAL4.png)
 
 
 ### Securing Spring Microservices
